@@ -4,9 +4,9 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Aleria — Your Journey, Our Purpose</title>
-  <meta name="description" content="Aleria (formerly Mnemosyne) — modern, caring mobility and dispatch. Your Journey, Our Purpose." />
+  <meta name="description" content="Aleria (formerly Mnemosyne) helps agencies coordinate paratransit with confidence—smart scheduling, rider-first tools, and clear communication." />
   <meta property="og:title" content="Aleria — Your Journey, Our Purpose" />
-  <meta property="og:description" content="Aleria (formerly Mnemosyne) — modern, caring mobility and dispatch." />
+  <meta property="og:description" content="Modern, caring mobility & dispatch for paratransit teams." />
   <meta property="og:type" content="website" />
   <meta name="theme-color" content="#0F3D73" />
 
@@ -18,44 +18,46 @@
     :root{
       --blue:#0F3D73;      /* Easy Rides-style deep blue */
       --red:#B82025;       /* Easy Rides-style red */
-      --ink:#0E243A;       /* body text */
+      --ink:#0E243A;
       --muted:#516279;
       --bg:#FFFFFF;
       --light:#F6F7FA;
-      --card:#FFFFFF;
-      --shadow: 0 10px 30px rgba(0,0,0,.06);
+      --line:#e8edf3;
+      --shadow:0 10px 28px rgba(0,0,0,.06);
       --radius:18px;
     }
     *{box-sizing:border-box}
     html,body{margin:0;padding:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     a{color:var(--blue);text-decoration:none}
     .wrap{max-width:1080px;margin-inline:auto;padding:24px}
-    header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.3) blur(6px);border-bottom:1px solid #eaeef3;z-index:20}
-    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:8px}
+    header{position:sticky;top:0;background:rgba(255,255,255,.9);backdrop-filter:saturate(1.2) blur(6px);border-bottom:1px solid var(--line);z-index:20}
+    .nav{display:flex;align-items:center;justify-content:space-between;gap:16px;padding-block:10px}
+
+    /* Wordmark (clean A) */
     .brand{display:flex;align-items:center;gap:14px}
-    .brand small{color:var(--muted)}
+    .wordmark{display:inline-flex;align-items:flex-end;gap:.08em;line-height:1}
+    .wmA{position:relative;display:inline-block;color:var(--blue);font-weight:800}
+    .wmRest{color:var(--blue);font-weight:800}
+    .feather{position:absolute;left:.26em;bottom:.16em;width:1.45em;height:.58em}
+    /* feather path is solid red, no gradient */
+
     .btn{display:inline-block;background:var(--blue);color:#fff;padding:12px 16px;border-radius:12px;font-weight:600}
     .btn.alt{background:var(--red)}
     .hero{padding-block:42px}
     .hero .inner{display:grid;grid-template-columns:1.1fr .9fr;gap:28px;align-items:center}
-    .hero h1{font-size:clamp(32px,4vw,48px);line-height:1.1;margin:.2em 0}
     .tag{color:var(--red);font-weight:800;letter-spacing:.02em}
-    .sub{color:var(--muted);max-width:60ch}
-    .card{background:var(--card);border:1px solid #e8edf3;border-radius:var(--radius);box-shadow:var(--shadow)}
-    .hero-visual{padding:18px;background:var(--light);border-radius:var(--radius);border:1px solid #e8edf3;display:flex;align-items:center;justify-content:center;min-height:260px}
+    h1{font-size:clamp(32px,4vw,48px);line-height:1.1;margin:.25em 0}
+    h2{font-size:clamp(22px,2.6vw,28px);margin:0 0 10px 0}
+    .sub{color:var(--muted);max-width:65ch}
+    .card{background:#fff;border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow)}
+    .hero-visual{padding:18px;background:var(--light);border-radius:var(--radius);border:1px solid var(--line);display:flex;align-items:center;justify-content:center;min-height:260px}
+    .hero-logo{max-width:100%;height:auto;display:block;border-radius:12px}
+    .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
     .grid{display:grid;gap:18px}
     .features{grid-template-columns:repeat(4,1fr)}
     .feat{padding:20px}
     .feat h3{margin:8px 0 6px 0}
-    .cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:18px}
-    .footer{margin-top:48px;border-top:1px solid #eaeef3;padding-block:26px;color:var(--muted);font-size:14px}
-
-    /* Clean inline wordmark */
-    .wordmark{display:inline-flex;align-items:flex-end;gap:.08em;font-weight:800;line-height:1; color:var(--blue)}
-    .wordmark .w-a{position:relative;display:inline-block;color:var(--blue)}
-    .feather{position:absolute;left:.26em;bottom:.18em;width:1.4em;height:.55em}
-    /* Tablet/monitor hero image */
-    .hero-logo{max-width:100%;height:auto;display:block}
+    .footer{margin-top:48px;border-top:1px solid var(--line);padding-block:26px;color:var(--muted);font-size:14px}
 
     @media (max-width:900px){
       .hero .inner{grid-template-columns:1fr}
@@ -67,23 +69,21 @@
 
   <header>
     <div class="wrap nav">
-      <div class="brand">
-        <!-- Cleaned-up ALERIA wordmark (A aligned; feather only red) -->
-        <div class="wordmark" aria-label="Aleria">
-          <span class="w-a" style="font-size:28px">A
-            <!-- red feather crossing the A -->
+      <div class="brand" aria-label="Aleria">
+        <!-- Cleaned-up wordmark: blue A (aligned) + solid red feather; rest blue -->
+        <div class="wordmark" style="font-size:28px">
+          <span class="wmA">A
             <svg class="feather" viewBox="0 0 100 38" aria-hidden="true">
               <path d="M5,28 C22,10 46,6 78,14 C56,13 37,20 22,30 L19,33 C35,23 58,17 94,19 C70,28 43,33 18,34 Z"
-                    fill="var(--red)"></path>
+                    fill="var(--red)"/>
             </svg>
           </span>
-          <span style="font-size:28px">LERIA</span>
+          <span class="wmRest">LERIA</span>
         </div>
-        <small>formerly Mnemosyne</small>
+        <small style="color:var(--muted)">formerly Mnemosyne</small>
       </div>
-
       <nav>
-        <a class="btn" href="#contact">Get in touch</a>
+        <a class="btn" href="#contact">Request a demo</a>
       </nav>
     </div>
   </header>
@@ -94,53 +94,178 @@
         <div class="tag">Your Journey, Our Purpose</div>
         <h1>Accessible, caring mobility & dispatch</h1>
         <p class="sub">
-          Aleria helps agencies coordinate paratransit with confidence—smart scheduling, rider-first workflows,
-          and clear communication for drivers, dispatchers, and passengers.
+          Aleria helps agencies coordinate paratransit with confidence—smart scheduling, rider-first tools,
+          and clear communication for dispatchers, drivers, and passengers.
+          <strong>Formerly Mnemosyne.</strong>
         </p>
         <div class="cta">
-          <a class="btn" href="#contact">Request a demo</a>
+          <a class="btn" href="#contact">Get in touch</a>
           <a class="btn alt" href="#features">See features</a>
         </div>
       </section>
 
+      <!-- HERO IMAGE: drop your monitor+road logo at assets/aleria-hero.png -->
       <aside class="hero-visual card">
-        <!-- If you add assets/aleria-hero.png, we'll show it; else we fall back to the clean wordmark -->
-        <picture>
-          <source srcset="assets/aleria-hero.png" />
-          <img class="hero-logo" alt="Aleria logo" src="data:image/svg+xml;utf8,
-            %3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 600 180'%3E
-              %3Crect width='600' height='180' rx='20' ry='20' fill='%23FFFFFF' stroke='%230F3D73' stroke-width='8'/%3E
-              %3Ctext x='48' y='108' font-family='Inter, Arial, sans-serif' font-weight='800' font-size='72' fill='%230F3D73'%3EA%3C/text%3E
-              %3Cpath d='M120 86 C160 66 208 64 270 76 C228 74 192 84 164 102 L160 106 C188 92 236 84 320 88 C268 110 216 118 160 120 Z' fill='%23B82025'/%3E
-              %3Ctext x='120' y='108' font-family='Inter, Arial, sans-serif' font-weight='800' font-size='72' fill='%230F3D73'%3ELERIA%3C/text%3E
-            %3C/svg%3E" />
-        </picture>
+        <img id="heroImage" class="hero-logo" alt="Aleria monitor logo"
+             src="assets/aleria-hero.png" />
+        <!-- Inline fallback wordmark if the PNG is missing -->
+        <div id="heroFallback" style="display:none;text-align:center">
+          <div class="wordmark" style="font-size:64px;display:inline-flex">
+            <span class="wmA">A
+              <svg class="feather" viewBox="0 0 100 38" aria-hidden="true">
+                <path d="M5,28 C22,10 46,6 78,14 C56,13 37,20 22,30 L19,33 C35,23 58,17 94,19 C70,28 43,33 18,34 Z"
+                      fill="var(--red)"/>
+              </svg>
+            </span>
+            <span class="wmRest">LERIA</span>
+          </div>
+          <div style="margin-top:10px;color:var(--red);font-weight:800">YOUR JOURNEY, OUR PURPOSE</div>
+        </div>
       </aside>
     </div>
 
-    <section id="features" class="grid features" style="margin-top:34px">
-      <div class="card feat">
-        <h3>Smart Dispatch</h3>
-        <p class="sub">Optimize routes and schedules with rider needs first.</p>
-      </div>
-      <div class="card feat">
-        <h3>Driver App</h3>
-        <p class="sub">Clear manifests, turn-by-turn support, and offline resilience.</p>
-      </div>
-      <div class="card feat">
-        <h3>Rider Care</h3>
-        <p class="sub">Accessible booking, reminders, and compassionate service.</p>
-      </div>
-      <div class="card feat">
-        <h3>Insights</h3>
-        <p class="sub">On-time performance, demand trends, and service quality.</p>
+    <!-- Trust blurb -->
+    <section class="card" style="padding:18px;margin-top:18px">
+      <p class="sub" style="margin:0">
+        Built with agencies, brokers, and nonprofits in mind—Aleria supports rider dignity, predictable operations,
+        and clear oversight across your whole service day.
+      </p>
+    </section>
+
+    <!-- Quick pillars -->
+    <section class="grid features" id="pillars" style="margin-top:28px">
+      <div class="card feat"><h3>Care by design</h3><p class="sub">Interfaces and flows shaped for riders’ needs and staff realities—supportive, simple, and accessible.</p></div>
+      <div class="card feat"><h3>Reliable operations</h3><p class="sub">From booking to drop-off, Aleria keeps everyone on the same page and reduces avoidable surprises.</p></div>
+      <div class="card feat"><h3>Clarity for every role</h3><p class="sub">Dispatchers see what matters, drivers get step-by-step guidance, riders receive timely updates.</p></div>
+      <div class="card feat"><h3>Actionable insight</h3><p class="sub">On-time performance, demand trends, and service quality metrics you can actually use.</p></div>
+    </section>
+
+    <!-- Features -->
+    <section id="features" style="margin-top:42px">
+      <h2>What Aleria does</h2>
+      <div class="grid" style="grid-template-columns:repeat(2,1fr)">
+        <div class="card feat">
+          <h3>Smart Dispatch & Scheduling</h3>
+          <p class="sub">Plan efficient routes with rider windows, eligibility, and preferences in mind. Live edits flow to drivers and riders instantly.</p>
+        </div>
+        <div class="card feat">
+          <h3>Rider Experience</h3>
+          <p class="sub">Simple booking and reminders via web/app/SMS/email. Clear pickup windows and updates reduce uncertainty and call volume.</p>
+        </div>
+        <div class="card feat">
+          <h3>Driver App</h3>
+          <p class="sub">Clean manifests, one-tap trip events, optional navigation handoff, and offline resilience for spotty coverage.</p>
+        </div>
+        <div class="card feat">
+          <h3>Real-time Ops</h3>
+          <p class="sub">Live map of vehicles and trips, no-show/late risk flags, and alerts that help you act before small delays become big ones.</p>
+        </div>
+        <div class="card feat">
+          <h3>Reporting & Insights</h3>
+          <p class="sub">See OTP, cancels/no-shows, dwell times, and demand patterns. Export or connect to BI—your data is yours.</p>
+        </div>
+        <div class="card feat">
+          <h3>Billing & Audit Trail</h3>
+          <p class="sub">Accurate trip events and mileage support clean invoicing and transparent audits.</p>
+        </div>
+        <div class="card feat">
+          <h3>Roles & Permissions</h3>
+          <p class="sub">Granular access for dispatchers, drivers, riders, admins, and partners—keep data where it belongs.</p>
+        </div>
+        <div class="card feat">
+          <h3>APIs & Integrations</h3>
+          <p class="sub">Connect messaging, telephony, mapping, and data tools. Bring Aleria into your existing workflows instead of the other way around.</p>
+        </div>
       </div>
     </section>
 
-    <section id="contact" style="margin-top:34px">
+    <!-- Solutions by role -->
+    <section id="solutions" style="margin-top:42px">
+      <h2>Made for your whole team</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card feat">
+          <h3>Dispatchers</h3>
+          <ul class="sub" style="padding-left:18px">
+            <li>Live fleet picture and priority queues</li>
+            <li>Drag-and-drop adjustments with instant updates</li>
+            <li>Exception-first views to focus attention</li>
+          </ul>
+        </div>
+        <div class="card feat">
+          <h3>Drivers</h3>
+          <ul class="sub" style="padding-left:18px">
+            <li>Clear manifests and turn-by-turn handoff</li>
+            <li>One-tap trip events with notes and assistance flags</li>
+            <li>Works even when coverage is patchy</li>
+          </ul>
+        </div>
+        <div class="card feat">
+          <h3>Riders & Caregivers</h3>
+          <ul class="sub" style="padding-left:18px">
+            <li>Simple requests and reminders</li>
+            <li>Accurate pickup windows reduce waiting stress</li>
+            <li>Optional caregiver notifications for peace of mind</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Trust topics -->
+    <section id="trust" style="margin-top:42px">
+      <h2>Accessibility, privacy, and security</h2>
+      <div class="grid" style="grid-template-columns:repeat(3,1fr)">
+        <div class="card feat">
+          <h3>Accessibility</h3>
+          <p class="sub">Inclusive patterns and clear language. High-contrast UI, keyboard support, and screen-reader friendly structure.</p>
+        </div>
+        <div class="card feat">
+          <h3>Privacy</h3>
+          <p class="sub">Minimal collection, scoped use, transparent retention, and data export options.</p>
+        </div>
+        <div class="card feat">
+          <h3>Security</h3>
+          <p class="sub">Best-practice encryption in transit and at rest, role-based access, and auditability.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section id="pricing" style="margin-top:42px">
+      <h2>Pricing</h2>
+      <p class="sub">Every agency is different. We tailor pricing by fleet size, monthly trip volume, and hosting needs.</p>
+      <div class="cta" style="margin-top:10px">
+        <a class="btn" href="#contact">Talk to sales</a>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" style="margin-top:42px">
+      <h2>Frequently asked questions</h2>
+      <details class="card" style="padding:16px"><summary><strong>Can we keep our current phone/SMS provider?</strong></summary>
+        <p class="sub">Yes—Aleria integrates with common telephony and messaging providers so you can keep existing numbers and templates.</p>
+      </details>
+      <details class="card" style="padding:16px;margin-top:10px"><summary><strong>Does the driver app work offline?</strong></summary>
+        <p class="sub">Yes—drivers can continue trip events and navigation handoff when coverage is spotty; data syncs when they’re back online.</p>
+      </details>
+      <details class="card" style="padding:16px;margin-top:10px"><summary><strong>What mapping do you use?</strong></summary>
+        <p class="sub">We support multiple map providers and can align to your agency’s preference for basemaps and routing.</p>
+      </details>
+      <details class="card" style="padding:16px;margin-top:10px"><summary><strong>How long is implementation?</strong></summary>
+        <p class="sub">Most teams start pilot operations in weeks, then expand as training and imports complete. We’ll shape a plan that matches your readiness.</p>
+      </details>
+      <details class="card" style="padding:16px;margin-top:10px"><summary><strong>Is Aleria cloud-hosted or on-prem?</strong></summary>
+        <p class="sub">We offer flexible hosting approaches so IT can choose what fits policy and budget.</p>
+      </details>
+      <details class="card" style="padding:16px;margin-top:10px"><summary><strong>Can we export our data?</strong></summary>
+        <p class="sub">Yes—your data is portable. Use exports or APIs to connect Aleria to your reporting stack.</p>
+      </details>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" style="margin-top:42px">
       <div class="card" style="padding:22px">
-        <h3 style="margin:4px 0 8px 0">Get in touch</h3>
-        <p class="sub">Interested in a pilot or want a walkthrough?</p>
+        <h2>Let’s talk</h2>
+        <p class="sub">Interested in a pilot or want a quick walkthrough?</p>
         <div class="cta">
           <a class="btn" href="mailto:cliff.hales@gmail.com?subject=Aleria%20Demo%20Request">Email us</a>
           <a class="btn alt" href="#top" onclick="document.documentElement.scrollTo({top:0,behavior:'smooth'})">Back to top</a>
@@ -154,6 +279,13 @@
   </footer>
 
   <script>
+    // Swap to inline fallback if the hero PNG isn't found
+    const heroImg = document.getElementById('heroImage');
+    const fallback = document.getElementById('heroFallback');
+    heroImg.addEventListener('error', () => {
+      heroImg.style.display = 'none';
+      fallback.style.display = 'block';
+    });
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
 </body>
