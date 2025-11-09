@@ -34,34 +34,7 @@
         }
       },
       daisyui: {
-        themes: [{
-          light: {
-            primary: "#0F3D73",
-            "primary-focus": "#0A2F5A",
-            "primary-content": "#FFFFFF",
-            secondary: "#B82025",
-            "secondary-focus": "#9A1B20",
-            "secondary-content": "#FFFFFF",
-            accent: "#0F3D73",
-            "accent-focus": "#0A2F5A",
-            "accent-content": "#FFFFFF",
-            neutral: "#0E243A",
-            "neutral-focus": "#0A1B29",
-            "neutral-content": "#FFFFFF",
-            "base-100": "#FFFFFF",
-            "base-200": "#F6F7FA",
-            "base-300": "#e8edf3",
-            "base-content": "#0E243A",
-            info: "#0F3D73",
-            "info-content": "#FFFFFF",
-            success: "#059669",
-            "success-content": "#FFFFFF",
-            warning: "#D97706",
-            "warning-content": "#FFFFFF",
-            error: "#B82025",
-            "error-content": "#FFFFFF",
-          },
-        }],
+        themes: ["light"],
       },
     }
   </script>
@@ -72,6 +45,58 @@
     .wmA{position:relative;display:inline-block;color:#0F3D73;font-weight:800}
     .wmRest{color:#0F3D73;font-weight:800}
     .feather{position:absolute;left:.26em;bottom:.16em;width:1.45em;height:.58em}
+    
+    /* Override all Daisy UI color classes with brand colors */
+    .btn-primary, .btn-primary:hover, .btn-primary:focus {
+      background-color: #0F3D73 !important;
+      border-color: #0F3D73 !important;
+      color: white !important;
+    }
+    
+    .btn-primary:hover {
+      background-color: #0A2F5A !important;
+      border-color: #0A2F5A !important;
+    }
+    
+    .btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
+      background-color: #B82025 !important;
+      border-color: #B82025 !important;
+      color: white !important;
+    }
+    
+    .btn-secondary:hover {
+      background-color: #9A1B20 !important;
+      border-color: #9A1B20 !important;
+    }
+    
+    .badge-secondary {
+      background-color: #B82025 !important;
+      color: white !important;
+      border-color: #B82025 !important;
+    }
+    
+    .badge-primary {
+      background-color: #0F3D73 !important;
+      color: white !important;
+      border-color: #0F3D73 !important;
+    }
+    
+    /* Override any other pink/generic blue elements */
+    .accent, .text-accent {
+      color: #0F3D73 !important;
+    }
+    
+    .bg-accent {
+      background-color: #0F3D73 !important;
+    }
+    
+    .text-secondary {
+      color: #B82025 !important;
+    }
+    
+    .bg-secondary {
+      background-color: #B82025 !important;
+    }
   </style>
 </head>
 <body class="font-inter">
