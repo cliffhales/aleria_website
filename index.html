@@ -16,6 +16,7 @@
   
   <script src="https://cdn.tailwindcss.com"></script>
   <link href="https://cdn.jsdelivr.net/npm/daisyui@4.4.24/dist/full.min.css" rel="stylesheet" type="text/css" />
+  <link rel="stylesheet" href="assets/styles.css">
   
   <script>
     tailwind.config = {
@@ -39,67 +40,8 @@
     }
   </script>
 
-  <style>
-    /* Custom styles for wordmark */
-    .wordmark{display:inline-flex;align-items:flex-end;gap:.08em;line-height:1}
-    .wmA{position:relative;display:inline-block;color:#0F3D73;font-weight:800}
-    .wmRest{color:#0F3D73;font-weight:800}
-    .feather{position:absolute;left:.26em;bottom:.16em;width:1.45em;height:.58em}
-    
-    /* Override all Daisy UI color classes with brand colors */
-    .btn-primary, .btn-primary:hover, .btn-primary:focus {
-      background-color: #0F3D73 !important;
-      border-color: #0F3D73 !important;
-      color: white !important;
-    }
-    
-    .btn-primary:hover {
-      background-color: #0A2F5A !important;
-      border-color: #0A2F5A !important;
-    }
-    
-    .btn-secondary, .btn-secondary:hover, .btn-secondary:focus {
-      background-color: #B82025 !important;
-      border-color: #B82025 !important;
-      color: white !important;
-    }
-    
-    .btn-secondary:hover {
-      background-color: #9A1B20 !important;
-      border-color: #9A1B20 !important;
-    }
-    
-    .badge-secondary {
-      background-color: #B82025 !important;
-      color: white !important;
-      border-color: #B82025 !important;
-    }
-    
-    .badge-primary {
-      background-color: #0F3D73 !important;
-      color: white !important;
-      border-color: #0F3D73 !important;
-    }
-    
-    /* Override any other pink/generic blue elements */
-    .accent, .text-accent {
-      color: #0F3D73 !important;
-    }
-    
-    .bg-accent {
-      background-color: #0F3D73 !important;
-    }
-    
-    .text-secondary {
-      color: #B82025 !important;
-    }
-    
-    .bg-secondary {
-      background-color: #B82025 !important;
-    }
-  </style>
 </head>
-<body class="font-inter">
+<body id="top" class="font-inter">
 
   <header class="navbar bg-base-100/90 backdrop-blur-sm border-b border-base-300 sticky top-0 z-50">
     <div class="navbar-start">
@@ -125,15 +67,15 @@
     <div class="hero min-h-[60vh]">
       <div class="hero-content grid lg:grid-cols-2 gap-8 max-w-none">
         <section class="text-left">
-          <div class="badge badge-secondary font-bold mb-4">Your Journey, Our Purpose</div>
-          <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">Accessible, caring mobility & dispatch</h1>
+          <div class="badge badge-secondary font-bold mb-4">Co-designed with mobility teams</div>
+          <h1 class="text-4xl lg:text-6xl font-bold leading-tight mb-6">Coordinate every paratransit workflow in one place</h1>
           <p class="text-lg text-aleria-muted max-w-2xl mb-8">
-            Aleria helps agencies coordinate paratransit with confidence—smart scheduling, rider-first tools,
-            and clear communication for dispatchers, drivers, and passengers.
+            Aleria unifies eligibility intake, trip planning, on-the-day dispatch, and rider communications. Agencies,
+            brokers, and nonprofits get a live source of truth while riders receive clearer, calmer trips.
           </p>
           <div class="flex flex-wrap gap-4">
-            <a class="btn btn-primary btn-lg" href="#contact">Get in touch</a>
-            <a class="btn btn-secondary btn-lg" href="#features">See features</a>
+            <a class="btn btn-primary btn-lg" href="#contact">Join the pilot</a>
+            <a class="btn btn-secondary btn-lg" href="#features">View focus areas</a>
           </div>
         </section>
 
@@ -161,13 +103,37 @@
     </div>
 
     <!-- Trust blurb -->
-        <!-- Trust blurb -->
     <section class="card bg-base-100 shadow-lg mt-8">
       <div class="card-body">
         <p class="text-aleria-muted text-lg">
-          Built with agencies, brokers, and nonprofits in mind—Aleria supports rider dignity, predictable operations,
-          and clear oversight across your whole service day.
+          We are pairing closely with agencies, brokers, and nonprofits to make sure Aleria reflects real-world paratransit
+          constraints—protecting rider dignity, keeping ops predictable, and giving leadership provable oversight.
         </p>
+      </div>
+    </section>
+
+    <!-- Rollout -->
+    <section id="roadmap" class="mt-16">
+      <h2 class="text-3xl lg:text-4xl font-bold text-aleria-ink mb-8">How we're rolling Aleria out</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+        <div class="card bg-base-100 shadow-lg">
+          <div class="card-body">
+            <h3 class="card-title text-aleria-ink">Private pilots</h3>
+            <p class="text-aleria-muted">Working shoulder-to-shoulder with mobility managers and dispatch leads to validate workflows before broad release.</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-lg">
+          <div class="card-body">
+            <h3 class="card-title text-aleria-ink">Operational readiness</h3>
+            <p class="text-aleria-muted">Building data migrations, training paths, and reliability tooling so agencies can transition without halting service.</p>
+          </div>
+        </div>
+        <div class="card bg-base-100 shadow-lg">
+          <div class="card-body">
+            <h3 class="card-title text-aleria-ink">Regional scale</h3>
+            <p class="text-aleria-muted">Preparing brokerage, subcontractor, and funding-partner views so multi-entity programs stay coordinated.</p>
+          </div>
+        </div>
       </div>
     </section>
 
@@ -175,26 +141,26 @@
     <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12" id="pillars">
       <div class="card bg-base-100 shadow-lg">
         <div class="card-body">
-          <h3 class="card-title text-aleria-ink">Care by design</h3>
-          <p class="text-aleria-muted">Interfaces and flows shaped for riders' needs and staff realities—supportive, simple, and accessible.</p>
+          <h3 class="card-title text-aleria-ink">Rider-centered service design</h3>
+          <p class="text-aleria-muted">Eligibility info, mobility aids, and preferences are captured once and flow across booking, manifests, and caregiver alerts.</p>
         </div>
       </div>
       <div class="card bg-base-100 shadow-lg">
         <div class="card-body">
-          <h3 class="card-title text-aleria-ink">Reliable operations</h3>
-          <p class="text-aleria-muted">From booking to drop-off, Aleria keeps everyone on the same page and reduces avoidable surprises.</p>
+          <h3 class="card-title text-aleria-ink">Predictable operations</h3>
+          <p class="text-aleria-muted">Scenario planning, automated assignments, and exception cues give supervisors ways to prevent cascading delays.</p>
         </div>
       </div>
       <div class="card bg-base-100 shadow-lg">
         <div class="card-body">
-          <h3 class="card-title text-aleria-ink">Clarity for every role</h3>
-          <p class="text-aleria-muted">Dispatchers see what matters, drivers get step-by-step guidance, riders receive timely updates.</p>
+          <h3 class="card-title text-aleria-ink">Shared situational awareness</h3>
+          <p class="text-aleria-muted">Dispatchers, reservationists, drivers, and partners work from the same live picture with role-tuned controls.</p>
         </div>
       </div>
       <div class="card bg-base-100 shadow-lg">
         <div class="card-body">
-          <h3 class="card-title text-aleria-ink">Actionable insight</h3>
-          <p class="text-aleria-muted">On-time performance, demand trends, and service quality metrics you can actually use.</p>
+          <h3 class="card-title text-aleria-ink">Continuous accountability</h3>
+          <p class="text-aleria-muted">On-time metrics, incidents, and commitments are traceable so leadership can prove compliance and highlight wins.</p>
         </div>
       </div>
     </section>
@@ -205,50 +171,50 @@
       <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">Smart Dispatch & Scheduling</h3>
-            <p class="text-aleria-muted">Plan efficient routes with rider windows, eligibility, and preferences in mind. Live edits flow to drivers and riders instantly.</p>
+            <h3 class="card-title text-aleria-ink">Service intake & eligibility</h3>
+            <p class="text-aleria-muted">Guide applications, recertifications, and conditional eligibility in one workflow so rider details stay accurate everywhere.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">Rider Experience</h3>
-            <p class="text-aleria-muted">Simple booking and reminders via web/app/SMS/email. Clear pickup windows and updates reduce uncertainty and call volume.</p>
+            <h3 class="card-title text-aleria-ink">Demand-aware scheduling</h3>
+            <p class="text-aleria-muted">Blend standing orders with daily requests, respect vehicles, aides, and time windows, and simulate scenarios before publishing.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">Driver App</h3>
-            <p class="text-aleria-muted">Clean manifests, one-tap trip events, optional navigation handoff, and offline resilience for spotty coverage.</p>
+            <h3 class="card-title text-aleria-ink">Rider & caregiver updates</h3>
+            <p class="text-aleria-muted">Offer IVR, SMS, email, and web tracking so people choose how they stay informed. Reduce uncertainty while lowering call volume.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">Real-time Ops</h3>
-            <p class="text-aleria-muted">Live map of vehicles and trips, no-show/late risk flags, and alerts that help you act before small delays become big ones.</p>
+            <h3 class="card-title text-aleria-ink">Driver mobile workspace</h3>
+            <p class="text-aleria-muted">Give drivers manifests, ADA notes, navigation handoff, and photo/voice notes in an offline-friendly app.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">Reporting & Insights</h3>
-            <p class="text-aleria-muted">See OTP, cancels/no-shows, dwell times, and demand patterns. Export or connect to BI—your data is yours.</p>
+            <h3 class="card-title text-aleria-ink">Live ops control center</h3>
+            <p class="text-aleria-muted">See trips, vehicles, risks, and incidents in real time. Escalate issues, reassign runs, or trigger support teams in a few clicks.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">Billing & Audit Trail</h3>
-            <p class="text-aleria-muted">Accurate trip events and mileage support clean invoicing and transparent audits.</p>
+            <h3 class="card-title text-aleria-ink">Program reporting</h3>
+            <p class="text-aleria-muted">Track OTP, denials, missed trips, dwell, and slack time. Build shareable dashboards or export raw data to existing BI tools.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">Roles & Permissions</h3>
-            <p class="text-aleria-muted">Granular access for dispatchers, drivers, riders, admins, and partners—keep data where it belongs.</p>
+            <h3 class="card-title text-aleria-ink">Billing & compliance</h3>
+            <p class="text-aleria-muted">Capture mileage, fares, funding sources, and incident notes automatically so finance and auditors stay aligned.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
-            <h3 class="card-title text-aleria-ink">APIs & Integrations</h3>
-            <p class="text-aleria-muted">Connect messaging, telephony, mapping, and data tools. Bring Aleria into your existing workflows instead of the other way around.</p>
+            <h3 class="card-title text-aleria-ink">Open architecture</h3>
+            <p class="text-aleria-muted">APIs, webhooks, and integrations keep Aleria in sync with CAD/AVL, HR/payroll, telephony, and reporting stacks.</p>
           </div>
         </div>
       </div>
@@ -262,9 +228,9 @@
           <div class="card-body">
             <h3 class="card-title text-aleria-ink">Dispatchers</h3>
             <ul class="text-aleria-muted space-y-2">
-              <li>• Live fleet picture and priority queues</li>
-              <li>• Drag-and-drop adjustments with instant updates</li>
-              <li>• Exception-first views to focus attention</li>
+              <li>• Risk cues for lateness, no-shows, and incidents</li>
+              <li>• Suggested reassignments with instant rider/driver updates</li>
+              <li>• Shared communication log across phone, SMS, and email</li>
             </ul>
           </div>
         </div>
@@ -272,9 +238,9 @@
           <div class="card-body">
             <h3 class="card-title text-aleria-ink">Drivers</h3>
             <ul class="text-aleria-muted space-y-2">
-              <li>• Clear manifests and turn-by-turn handoff</li>
-              <li>• One-tap trip events with notes and assistance flags</li>
-              <li>• Works even when coverage is patchy</li>
+              <li>• Manifests with ADA notes, mobility aids, and do-not-ride flags</li>
+              <li>• Hands-free prompts for securement, fare, and assistance</li>
+              <li>• Offline capture of photos, signatures, and incident notes</li>
             </ul>
           </div>
         </div>
@@ -282,9 +248,9 @@
           <div class="card-body">
             <h3 class="card-title text-aleria-ink">Riders & Caregivers</h3>
             <ul class="text-aleria-muted space-y-2">
-              <li>• Simple requests and reminders</li>
-              <li>• Accurate pickup windows reduce waiting stress</li>
-              <li>• Optional caregiver notifications for peace of mind</li>
+              <li>• Self-service requests, changes, and confirmations</li>
+              <li>• Predictive ETAs expressed in plain language</li>
+              <li>• Opt-in caregiver or case manager notifications</li>
             </ul>
           </div>
         </div>
@@ -298,19 +264,19 @@
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
             <h3 class="card-title text-aleria-ink">Accessibility</h3>
-            <p class="text-aleria-muted">Inclusive patterns and clear language. High-contrast UI, keyboard support, and screen-reader friendly structure.</p>
+            <p class="text-aleria-muted">WCAG 2.2 AA patterns, large-type modes, keyboard-and-screen-reader parity, and rider-facing language reviewed by advisory boards.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
             <h3 class="card-title text-aleria-ink">Privacy</h3>
-            <p class="text-aleria-muted">Minimal collection, scoped use, transparent retention, and data export options.</p>
+            <p class="text-aleria-muted">Data minimization, consent and retention controls, and portable exports so agencies stay aligned with policy and grant requirements.</p>
           </div>
         </div>
         <div class="card bg-base-100 shadow-lg">
           <div class="card-body">
             <h3 class="card-title text-aleria-ink">Security</h3>
-            <p class="text-aleria-muted">Best-practice encryption in transit and at rest, role-based access, and auditability.</p>
+            <p class="text-aleria-muted">Encryption in transit and at rest, SSO + MFA support, role-based permissions, and full audit logging.</p>
           </div>
         </div>
       </div>
@@ -318,10 +284,10 @@
 
     <!-- Pricing -->
     <section id="pricing" class="mt-16">
-      <h2 class="text-3xl lg:text-4xl font-bold text-aleria-ink mb-4">Pricing</h2>
-      <p class="text-lg text-aleria-muted mb-6">Every agency is different. We tailor pricing by fleet size, monthly trip volume, and hosting needs.</p>
+      <h2 class="text-3xl lg:text-4xl font-bold text-aleria-ink mb-4">Pilot partnerships & pricing</h2>
+      <p class="text-lg text-aleria-muted mb-6">We scope pricing around fleet size, trip volume, integrations, and support level. Early pilots include migration planning and dedicated training time.</p>
       <div class="flex flex-wrap gap-4">
-        <a class="btn btn-primary btn-lg" href="#contact">Talk to sales</a>
+        <a class="btn btn-primary btn-lg" href="#contact">Plan a discovery call</a>
       </div>
     </section>
 
@@ -332,10 +298,19 @@
         <div class="collapse collapse-plus bg-base-100 shadow-lg">
           <input type="radio" name="faq-accordion" checked="checked" />
           <div class="collapse-title text-lg font-semibold text-aleria-ink">
+            What stage is Aleria currently in?
+          </div>
+          <div class="collapse-content">
+            <p class="text-aleria-muted">We're in private pilots with agencies and nonprofits. Feedback from those teams is shaping the first generally-available release.</p>
+          </div>
+        </div>
+        <div class="collapse collapse-plus bg-base-100 shadow-lg">
+          <input type="radio" name="faq-accordion" />
+          <div class="collapse-title text-lg font-semibold text-aleria-ink">
             Can we keep our current phone/SMS provider?
           </div>
           <div class="collapse-content">
-            <p class="text-aleria-muted">Yes—Aleria integrates with common telephony and messaging providers so you can keep existing numbers and templates.</p>
+            <p class="text-aleria-muted">Yes—Aleria plugs into existing telephony and messaging accounts so you can keep familiar numbers, IVR trees, and templates.</p>
           </div>
         </div>
         <div class="collapse collapse-plus bg-base-100 shadow-lg">
@@ -344,16 +319,16 @@
             Does the driver app work offline?
           </div>
           <div class="collapse-content">
-            <p class="text-aleria-muted">Yes—drivers can continue trip events and navigation handoff when coverage is spotty; data syncs when they're back online.</p>
+            <p class="text-aleria-muted">Yes. Trip events queue locally when coverage drops and sync as soon as the device reconnects, so compliance data stays intact.</p>
           </div>
         </div>
         <div class="collapse collapse-plus bg-base-100 shadow-lg">
           <input type="radio" name="faq-accordion" />
           <div class="collapse-title text-lg font-semibold text-aleria-ink">
-            What mapping do you use?
+            What mapping and navigation do you use?
           </div>
           <div class="collapse-content">
-            <p class="text-aleria-muted">We support multiple map providers and can align to your agency's preference for basemaps and routing.</p>
+            <p class="text-aleria-muted">We support commercial and open-source basemaps plus handoff to the navigation apps your fleet already trusts.</p>
           </div>
         </div>
         <div class="collapse collapse-plus bg-base-100 shadow-lg">
@@ -362,7 +337,7 @@
             How long is implementation?
           </div>
           <div class="collapse-content">
-            <p class="text-aleria-muted">Most teams start pilot operations in weeks, then expand as training and imports complete. We'll shape a plan that matches your readiness.</p>
+            <p class="text-aleria-muted">Most partners move from discovery to pilot service in 6–10 weeks, depending on data migrations, integrations, and training cadence.</p>
           </div>
         </div>
         <div class="collapse collapse-plus bg-base-100 shadow-lg">
@@ -371,7 +346,7 @@
             Is Aleria cloud-hosted or on-prem?
           </div>
           <div class="collapse-content">
-            <p class="text-aleria-muted">We offer flexible hosting approaches so IT can choose what fits policy and budget.</p>
+            <p class="text-aleria-muted">We offer single-tenant cloud hosting by default and can support dedicated environments that align with your IT policies.</p>
           </div>
         </div>
         <div class="collapse collapse-plus bg-base-100 shadow-lg">
@@ -380,7 +355,7 @@
             Can we export our data?
           </div>
           <div class="collapse-content">
-            <p class="text-aleria-muted">Yes—your data is portable. Use exports or APIs to connect Aleria to your reporting stack.</p>
+            <p class="text-aleria-muted">Absolutely—bulk exports, APIs, and scheduled drops keep Aleria connected to your reporting or data warehouse stack.</p>
           </div>
         </div>
       </div>
@@ -390,10 +365,10 @@
     <section id="contact" class="mt-16">
       <div class="card bg-base-100 shadow-xl">
         <div class="card-body">
-          <h2 class="card-title text-3xl lg:text-4xl font-bold text-aleria-ink">Let's talk</h2>
-          <p class="text-lg text-aleria-muted mb-6">Interested in a pilot or want a quick walkthrough?</p>
+          <h2 class="card-title text-3xl lg:text-4xl font-bold text-aleria-ink">Ready to co-design Aleria?</h2>
+          <p class="text-lg text-aleria-muted mb-6">Share a bit about your service footprint, desired go-live window, and current tools—we'll tailor a pilot path.</p>
           <div class="card-actions">
-            <a class="btn btn-primary btn-lg" href="mailto:cliff.hales@gmail.com?subject=Aleria%20Demo%20Request">Email us</a>
+            <a class="btn btn-primary btn-lg" href="mailto:cliff.hales@gmail.com?subject=Aleria%20Pilot%20Inquiry">Email us</a>
             <a class="btn btn-secondary btn-lg" href="#top" onclick="document.documentElement.scrollTo({top:0,behavior:'smooth'})">Back to top</a>
           </div>
         </div>
