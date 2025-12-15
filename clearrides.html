@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Clear Rides &mdash; Demand-response transit</title>
+  <meta name="description" content="Clear Rides is a modern dispatch and driver platform for demand-response and paratransit operations." />
+  <style>
+    :root {
+      --cr-blue: #00397a;
+      --cr-red: #b5121b;
+      --cr-green: #43a047;
+      --cr-bg: #ffffff;
+      --cr-grey: #e7e6ec;
+      --cr-text: #0b0c10;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: var(--cr-bg);
+      color: var(--cr-text);
+      line-height: 1.5;
+    }
+
+    a {
+      color: var(--cr-blue);
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    .page {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    header {
+      border-bottom: 1px solid var(--cr-grey);
+      background: #fcfcff;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1rem 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .nav-left {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .logo-mark {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 56px;
+      height: 56px;
+    }
+
+    /* Simple inline logo version (you can replace with your SVG/PNG) */
+    .logo-icon {
+      width: 100%;
+      height: 100%;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-text-main {
+      font-weight: 700;
+      font-size: 1.35rem;
+      letter-spacing: 0.02em;
+    }
+
+    .logo-text-main span:first-child {
+      color: var(--cr-blue);
+    }
+
+    .logo-text-main span:last-child {
+      color: var(--cr-red);
+    }
+
+    .logo-text-tagline {
+      font-size: 0.8rem;
+      color: var(--cr-blue);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .nav-links a {
+      color: var(--cr-text);
+      font-weight: 500;
+    }
+
+    .nav-links a.cta {
+      padding: 0.5rem 0.9rem;
+      border-radius: 999px;
+      border: 1px solid var(--cr-blue);
+      color: var(--cr-blue);
+      text-decoration: none;
+    }
+
+    .nav-links a.cta:hover {
+      background: var(--cr-blue);
+      color: #ffffff;
+      text-decoration: none;
+    }
+
+    main {
+      flex: 1;
+    }
+
+    .section {
+      padding: 3rem 1.25rem;
+    }
+
+    .section-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 2.75rem;
+      align-items: center;
+    }
+
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: #f1f4ff;
+      color: var(--cr-blue);
+      padding: 0.3rem 0.8rem;
+      border-radius: 999px;
+      font-size: 0.8rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .hero-title {
+      font-size: 2.6rem;
+      line-height: 1.1;
+      margin-bottom: 1rem;
+    }
+
+    .hero-title span {
+      color: var(--cr-blue);
+    }
+
+    .hero-body {
+      font-size: 1rem;
+      max-width: 34rem;
+      margin-bottom: 1.5rem;
+      color: #333743;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .btn-primary {
+      background: var(--cr-blue);
+      color: #ffffff;
+      border-radius: 999px;
+      padding: 0.7rem 1.4rem;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-primary:hover {
+      background: #002f63;
+    }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--cr-blue);
+      border-radius: 999px;
+      padding: 0.7rem 1.2rem;
+      font-weight: 500;
+      border: 1px solid var(--cr-blue);
+      cursor: pointer;
+      font-size: 0.95rem;
+    }
+
+    .btn-ghost:hover {
+      background: #f1f4ff;
+    }
+
+    .hero-note {
+      font-size: 0.8rem;
+      color: #5a5f6c;
+    }
+
+    .hero-note strong {
+      color: var(--cr-blue);
+    }
+
+    .hero-card {
+      border-radius: 1.25rem;
+      border: 1px solid var(--cr-grey);
+      background: #fdfdff;
+      padding: 1.5rem;
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.04);
+    }
+
+    .hero-card-title {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--cr-blue);
+      margin-bottom: 1rem;
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+      margin-bottom: 1.25rem;
+      font-size: 0.9rem;
+    }
+
+    .hero-metric-label {
+      color: #5a5f6c;
+      font-size: 0.8rem;
+    }
+
+    .hero-metric-value {
+      font-weight: 700;
+      font-size: 1.1rem;
+    }
+
+    .hero-card-list {
+      list-style: none;
+      font-size: 0.85rem;
+      color: #4a4e59;
+      padding-left: 1rem;
+    }
+
+    .hero-card-list li::before {
+      content: "•";
+      margin-right: 0.5rem;
+      color: var(--cr-green);
+    }
+
+    .section-title {
+      font-size: 1.8rem;
+      margin-bottom: 0.75rem;
+      color: var(--cr-blue);
+    }
+
+    .section-lead {
+      max-width: 40rem;
+      font-size: 0.98rem;
+      color: #3b3f4a;
+      margin-bottom: 2rem;
+    }
+
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.75rem;
+    }
+
+    .card {
+      border-radius: 1rem;
+      border: 1px solid var(--cr-grey);
+      padding: 1.3rem 1.3rem 1.4rem;
+      background: #ffffff;
+    }
+
+    .card-kicker {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #737887;
+      margin-bottom: 0.4rem;
+    }
+
+    .card-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 0.4rem;
+      color: var(--cr-blue);
+    }
+
+    .card-body {
+      font-size: 0.9rem;
+      color: #4a4e59;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-list {
+      list-style: none;
+      font-size: 0.86rem;
+      color: #4a4e59;
+      padding-left: 1rem;
+    }
+
+    .card-list li::before {
+      content: "•";
+      margin-right: 0.4rem;
+      color: var(--cr-green);
+    }
+
+    .modules {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1.5rem;
+    }
+
+    .module-card {
+      border-radius: 1rem;
+      border: 1px solid var(--cr-grey);
+      padding: 1.25rem 1.4rem 1.4rem;
+      background: #fdfdff;
+    }
+
+    .module-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: #737887;
+      margin-bottom: 0.35rem;
+    }
+
+    .module-title {
+      font-size: 1.2rem;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      color: var(--cr-blue);
+    }
+
+    .module-tag {
+      display: inline-flex;
+      align-items: center;
+      font-size: 0.75rem;
+      padding: 0.15rem 0.6rem;
+      border-radius: 999px;
+      border: 1px solid #cfd3e6;
+      color: #555b6a;
+      margin-bottom: 0.6rem;
+    }
+
+    .module-body {
+      font-size: 0.9rem;
+      color: #4a4e59;
+      margin-bottom: 0.5rem;
+    }
+
+    .module-list {
+      list-style: none;
+      padding-left: 1rem;
+      font-size: 0.86rem;
+      color: #4a4e59;
+    }
+
+    .module-list li::before {
+      content: "•";
+      margin-right: 0.4rem;
+      color: var(--cr-green);
+    }
+
+    .cta-section {
+      background: #f8f9ff;
+      border-top: 1px solid var(--cr-grey);
+    }
+
+    .cta-box {
+      border-radius: 1.5rem;
+      border: 1px solid var(--cr-grey);
+      padding: 1.8rem 1.6rem;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.25rem;
+      background: #ffffff;
+    }
+
+    .cta-title {
+      font-size: 1.4rem;
+      color: var(--cr-blue);
+      margin-bottom: 0.3rem;
+    }
+
+    .cta-text {
+      font-size: 0.95rem;
+      color: #3b3f4a;
+    }
+
+    .cta-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.75rem;
+    }
+
+    footer {
+      border-top: 1px solid var(--cr-grey);
+      padding: 1.25rem 1.25rem 2rem;
+      font-size: 0.8rem;
+      color: #6b6f7b;
+    }
+
+    .footer-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0.75rem;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .hero-card {
+        order: -1;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .grid-3 {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .modules {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
+      .section {
+        padding: 2.5rem 1rem;
+      }
+
+      .hero-title {
+        font-size: 2.15rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header>
+      <div class="nav">
+        <div class="nav-left">
+          <div class="logo-mark">
+            <!-- Swap this inline SVG with your finalized Clear Rides logo SVG if you like -->
+            <svg class="logo-icon" viewBox="0 0 90 28" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+              <rect width="90" height="28" fill="none" />
+              <line x1="6" y1="14" x2="84" y2="14" stroke="#B5121B" stroke-width="4" stroke-linecap="round" />
+              <circle cx="6" cy="14" r="6" fill="#00397A" stroke="#FFFFFF" stroke-width="2" />
+              <circle cx="84" cy="14" r="6" fill="#00397A" stroke="#FFFFFF" stroke-width="2" />
+              <circle cx="6" cy="14" r="3" fill="#FFFFFF" />
+              <circle cx="84" cy="14" r="3" fill="#FFFFFF" />
+              <circle cx="84" cy="14" r="8.5" fill="none" stroke="#43A047" stroke-width="2" />
+            </svg>
+          </div>
+          <div class="logo-text">
+            <div class="logo-text-main"><span>Clear</span><span> Rides</span></div>
+            <div class="logo-text-tagline">Demand-response transit</div>
+          </div>
+        </div>
+        <nav class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#modules">Planner &amp; Driver</a>
+          <a href="#how-it-helps">For agencies</a>
+          <a href="#contact" class="cta">Talk with us</a>
+        </nav>
+      </div>
+    </header>
+
+    <main>
+      <!-- Hero -->
+      <section class="section">
+        <div class="section-inner hero">
+          <div>
+            <div class="hero-kicker">Built as a modern successor to legacy demand-response software</div>
+            <h1 class="hero-title">
+              Keep every ride <span>clear</span>, from dispatch to drop-off.
+            </h1>
+            <p class="hero-body">
+              Clear Rides is a web-based dispatch and driver platform for demand-response and paratransit systems. Plan trips, assign vehicles, and keep drivers in sync with simple tools your team can actually live in all day.
+            </p>
+            <div class="hero-actions">
+              <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({ behavior: 'smooth' });">Request a conversation</button>
+              <button class="btn-ghost" onclick="document.getElementById('modules').scrollIntoView({ behavior: 'smooth' });">See Planner &amp; Driver</button>
+            </div>
+            <p class="hero-note">
+              <strong>Clear Rides</strong> is designed for 5&ndash;50 vehicle demand-response fleets, with a focus on reliability and simple day-to-day operations.
+            </p>
+          </div>
+
+          <aside class="hero-card" aria-label="Service snapshot">
+            <div class="hero-card-title">A clear view of today’s service</div>
+            <div class="hero-metrics">
+              <div>
+                <div class="hero-metric-label">Today’s trips</div>
+                <div class="hero-metric-value">128</div>
+              </div>
+              <div>
+                <div class="hero-metric-label">On-time pickup</div>
+                <div class="hero-metric-value" style="color: var(--cr-green);">94%</div>
+              </div>
+              <div>
+                <div class="hero-metric-label">Vehicles in service</div>
+                <div class="hero-metric-value">18</div>
+              </div>
+              <div>
+                <div class="hero-metric-label">Active drivers</div>
+                <div class="hero-metric-value">21</div>
+              </div>
+            </div>
+            <ul class="hero-card-list">
+              <li>Live map of vehicles and trips.</li>
+              <li>Simple status flow: scheduled, en route, arrived, onboard, complete.</li>
+              <li>Clean exports for monthly and regulatory reporting.</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="section" aria-labelledby="features-heading">
+        <div class="section-inner">
+          <h2 id="features-heading" class="section-title">What Clear Rides focuses on first</h2>
+          <p class="section-lead">
+            Start with the daily work that matters most: booking and scheduling trips, dispatching vehicles, and giving drivers a straightforward manifest that works even when connectivity is imperfect.
+          </p>
+          <div class="grid-3">
+            <article class="card">
+              <div class="card-kicker">Dispatch</div>
+              <h3 class="card-title">Plan and adjust your day in one place</h3>
+              <p class="card-body">
+                Build runs, assign trips, and make same-day changes without fighting the software. Clear Rides Planner is designed for dispatchers who live in the system for an entire shift.
+              </p>
+              <ul class="card-list">
+                <li>Trip entry with clients, addresses, windows, and notes.</li>
+                <li>Assign and rebalance trips across vehicles throughout the day.</li>
+                <li>Track status changes in real time as drivers work their manifests.</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-kicker">Drivers</div>
+              <h3 class="card-title">Manifests that stay clear on the road</h3>
+              <p class="card-body">
+                Drivers see exactly what they need: who to pick up, where, and when. The mobile app focuses on reliability and low-friction buttons rather than extra clutter.
+              </p>
+              <ul class="card-list">
+                <li>Ordered trip list with names, addresses, and requested times.</li>
+                <li>Simple ARRIVE / NO-SHOW / ONBOARD / DROP-OFF flow.</li>
+                <li>Location updates sent back to dispatch when connectivity allows.</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-kicker">Reporting</div>
+              <h3 class="card-title">Clean data for tomorrow’s reports</h3>
+              <p class="card-body">
+                Clear Rides starts with practical exports you can use immediately, and leaves room to grow into more advanced reporting over time.
+              </p>
+              <ul class="card-list">
+                <li>Trip- and stop-level CSV exports for analysis.</li>
+                <li>Daily and monthly summaries for internal use.</li>
+                <li>Foundations for regulatory and funding-related reporting.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- Modules -->
+      <section id="modules" class="section" aria-labelledby="modules-heading">
+        <div class="section-inner">
+          <h2 id="modules-heading" class="section-title">Two core modules, shared data</h2>
+          <p class="section-lead">
+            Clear Rides starts with two applications that share the same live view of your service: one for the office, one for the road.
+          </p>
+          <div class="modules">
+            <article class="module-card">
+              <div class="module-label">Dispatcher</div>
+              <h3 class="module-title">Clear Rides Planner</h3>
+              <div class="module-tag">Web app for schedulers &amp; dispatchers</div>
+              <p class="module-body">
+                Plan trips, manage runs, see vehicles on the map, and keep track of what has happened today and what is still at risk.
+              </p>
+              <ul class="module-list">
+                <li>Schedule view by vehicle, by trip, or by time.</li>
+                <li>Live status updates from drivers.</li>
+                <li>Tools for handling no-shows, cancels, and reassignments.</li>
+              </ul>
+            </article>
+
+            <article class="module-card">
+              <div class="module-label">Drivers</div>
+              <h3 class="module-title">Clear Rides Driver</h3>
+              <div class="module-tag">Mobile app for drivers</div>
+              <p class="module-body">
+                A driver-focused manifest that keeps working even when coverage is spotty, then syncs back when the connection comes back.
+              </p>
+              <ul class="module-list">
+                <li>See today’s manifest at a glance.</li>
+                <li>Record trip events with a few clear buttons.</li>
+                <li>Launch turn-by-turn navigation to pickup and drop-off locations.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- For agencies / how it helps -->
+      <section id="how-it-helps" class="section" aria-labelledby="agencies-heading">
+        <div class="section-inner">
+          <h2 id="agencies-heading" class="section-title">Designed with small and mid-size agencies in mind</h2>
+          <p class="section-lead">
+            Clear Rides focuses first on fleets in roughly the 5&ndash;50 vehicle range&mdash;large enough to need real tools, small enough that every operator and dispatcher wears multiple hats.
+          </p>
+          <div class="grid-3">
+            <article class="card">
+              <div class="card-kicker">Get off legacy tools</div>
+              <h3 class="card-title">A path forward from aging systems</h3>
+              <p class="card-body">
+                Move from desktop-only software to a modern web-based platform without trying to replace everything at once.
+              </p>
+              <ul class="card-list">
+                <li>Prioritize the scheduling, dispatch, and driver flows.</li>
+                <li>Plan a staged cutover that matches your risk tolerance.</li>
+                <li>Keep access to historical data while you transition.</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-kicker">Team experience</div>
+              <h3 class="card-title">Built around real dispatcher workflows</h3>
+              <p class="card-body">
+                The goal is not a flashy interface; it’s a tool dispatchers can live in all day without fighting it.
+              </p>
+              <ul class="card-list">
+                <li>Layout and wording tuned for day-of-service work.</li>
+                <li>Clear, minimal status options instead of long menus.</li>
+                <li>Room to grow into more automation over time.</li>
+              </ul>
+            </article>
+
+            <article class="card">
+              <div class="card-kicker">Funding reality</div>
+              <h3 class="card-title">Flexible around how you fund projects</h3>
+              <p class="card-body">
+                Whether you use grant funding, operating budgets, or a mix, Clear Rides can be packaged to fit typical transit procurement approaches.
+              </p>
+              <ul class="card-list">
+                <li>Implementation and ongoing support separated clearly.</li>
+                <li>Options for multi-year commitments where helpful.</li>
+                <li>Support for RFP-driven procurement processes.</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA / Contact -->
+      <section id="contact" class="section cta-section" aria-labelledby="contact-heading">
+        <div class="section-inner">
+          <div class="cta-box">
+            <div>
+              <h2 id="contact-heading" class="cta-title">Interested in Clear Rides?</h2>
+              <p class="cta-text">
+                If you’re currently using a legacy demand-response system and want to talk about what a transition could look like, get in touch for an informal conversation.
+              </p>
+            </div>
+            <div class="cta-actions">
+              <a class="btn-primary" href="mailto:info@example.com?subject=Clear%20Rides%20conversation">Email about Clear Rides</a>
+              <button class="btn-ghost" onclick="window.location.href='#features'">Review core features</button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="footer-inner">
+        <div>
+          &copy; <span id="year"></span> Clear Rides. All rights reserved.
+        </div>
+        <div>
+          Demand-response transit &middot; Planner &amp; Driver modules
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    // Simple year injection for the footer
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
